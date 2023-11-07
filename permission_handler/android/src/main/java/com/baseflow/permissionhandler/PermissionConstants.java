@@ -2,8 +2,10 @@ package com.baseflow.permissionhandler;
 
 import androidx.annotation.IntDef;
 
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 final class PermissionConstants {
     static final String LOG_TAG = "permissions_handler";
@@ -13,8 +15,13 @@ final class PermissionConstants {
     static final int PERMISSION_CODE_SYSTEM_ALERT_WINDOW = 211;
     static final int PERMISSION_CODE_REQUEST_INSTALL_PACKAGES = 212;
     static final int PERMISSION_CODE_ACCESS_NOTIFICATION_POLICY = 213;
+    static final int PERMISSION_CODE_SCHEDULE_EXACT_ALARM = 214;
 
-    //PERMISSION_GROUP
+
+    // PERMISSION_GROUP
+
+    // Deprecated in favor of PERMISSION_GROUP_CALENDAR_WRITE_ONLY and
+    // PERMISSION_GROUP_CALENDAR_FULL_ACCESS.
     static final int PERMISSION_GROUP_CALENDAR = 0;
     static final int PERMISSION_GROUP_CAMERA = 1;
     static final int PERMISSION_GROUP_CONTACTS = 2;
@@ -46,7 +53,13 @@ final class PermissionConstants {
     static final int PERMISSION_GROUP_BLUETOOTH_SCAN = 28;
     static final int PERMISSION_GROUP_BLUETOOTH_ADVERTISE = 29;
     static final int PERMISSION_GROUP_BLUETOOTH_CONNECT = 30;
-
+    static final int PERMISSION_GROUP_NEARBY_WIFI_DEVICES = 31;
+    static final int PERMISSION_GROUP_VIDEOS = 32;
+    static final int PERMISSION_GROUP_AUDIO = 33;
+    static final int PERMISSION_GROUP_SCHEDULE_EXACT_ALARM = 34;
+    static final int PERMISSION_GROUP_SENSORS_ALWAYS = 35;
+    static final int PERMISSION_GROUP_CALENDAR_WRITE_ONLY = 36;
+    static final int PERMISSION_GROUP_CALENDAR_FULL_ACCESS = 37;
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({
@@ -62,6 +75,7 @@ final class PermissionConstants {
             PERMISSION_GROUP_PHOTOS,
             PERMISSION_GROUP_REMINDERS,
             PERMISSION_GROUP_SENSORS,
+            PERMISSION_GROUP_SENSORS_ALWAYS,
             PERMISSION_GROUP_SMS,
             PERMISSION_GROUP_SPEECH,
             PERMISSION_GROUP_STORAGE,
@@ -77,7 +91,13 @@ final class PermissionConstants {
             PERMISSION_GROUP_ACCESS_NOTIFICATION_POLICY,
             PERMISSION_GROUP_BLUETOOTH_SCAN,
             PERMISSION_GROUP_BLUETOOTH_ADVERTISE,
-            PERMISSION_GROUP_BLUETOOTH_CONNECT
+            PERMISSION_GROUP_BLUETOOTH_CONNECT,
+            PERMISSION_GROUP_NEARBY_WIFI_DEVICES,
+            PERMISSION_GROUP_VIDEOS,
+            PERMISSION_GROUP_AUDIO,
+            PERMISSION_GROUP_SCHEDULE_EXACT_ALARM,
+            PERMISSION_GROUP_CALENDAR_WRITE_ONLY,
+            PERMISSION_GROUP_CALENDAR_FULL_ACCESS
     })
     @interface PermissionGroup {
     }
@@ -89,6 +109,7 @@ final class PermissionConstants {
     static final int PERMISSION_STATUS_LIMITED = 3;
     static final int PERMISSION_STATUS_NEVER_ASK_AGAIN = 4;
 
+    @Target(ElementType.TYPE_USE)
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({
             PERMISSION_STATUS_DENIED,
